@@ -48,7 +48,6 @@ export const signup = async (req, res) => {
       return res.status(400).json({ message: "User already exists" });
 
     const user = await User.create({ name, email, password });
-    console.log(user);
 
     //authenticate user
     const { accessToken, refreshToken } = generateTokens(user._id);
@@ -74,5 +73,16 @@ export const signin = async (req, res) => {
 };
 
 export const signout = async (req, res) => {
-  res.send("Signout route called");
+  try {
+    const refreshToken = req.cookies.refreshToken;
+    const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+
+    await redis.del(`refresh_token:${decoded.userId}`);
+
+    res.clearCookie("accessToken");
+    res.clearCookie("refreshToken");
+    res.json({ message: "Logout successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
 };
