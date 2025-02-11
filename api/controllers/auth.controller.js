@@ -105,3 +105,35 @@ export const signout = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
+// refresh access token
+export const refreshToken = async (req, res) => {
+  try {
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) {
+      return res.status(401).json({ message: "No refresh token provided" });
+    }
+
+    const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+    const storedToken = await redis.get(`refresh token: ${decoded.userId}`);
+
+    if (storedToken !== refreshToken) {
+      return res.status(401).json({ message: "Invalid refresh token" });
+    }
+
+    const accessToken = jwt.sign({ userId }, process.env.ACCESS_TOKEN_SECRET, {
+      expiresIn: "15m",
+    });
+
+    res.cookie("accessToken", accessToken, {
+      httpOnly: true, // prevent xss attack
+      secure: process.env.NODE_ENV === "production",
+      sameTime: "strict", // prevent CSRF attack
+      maxAge: 15 * 60 * 1000, // expires in 15 minutes
+    });
+
+    res.json({ message: "Token refreshed successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
