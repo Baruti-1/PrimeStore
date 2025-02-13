@@ -58,6 +58,15 @@ export const getFeaturedProducts = async (req, res) => {
   }
 };
 
+export const getProductsByCategory = async (req, res) => {
+  try {
+    const products = await Product.find(req.params.category);
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
 export const getRecommendedProducts = async (req, res) => {
   try {
     const products = await Product.aggregate([
