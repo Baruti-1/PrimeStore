@@ -80,6 +80,22 @@ export const getRecommendedProducts = async (req, res) => {
   }
 };
 
+export const toggleFeaturedProduct = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      product.isFeatured = !product.isFeatured;
+      const updatedProduct = await Product.save();
+      // update redis
+      await updateFeaturedProductsCache();
+    } else {
+      res.status(404).json({ message: "No product found" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
 export const deleteProduct = async (req, res) => {
   try {
     const product = await Product.findById(req.params.product_id);
@@ -102,3 +118,12 @@ export const deleteProduct = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
+async function updateFeaturedProductsCache() {
+  try {
+    const featuredProducts = await Product.find({ isFeatured: true }).lean();
+    await redis.set("featured_products", JSON.stringify(featuredProducts));
+  } catch (error) {
+    console.log("Error in updating cache");
+  }
+}
