@@ -18,3 +18,21 @@ export const addToCart = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
+export const removeAllFromCart = async (req, res) => {
+  try {
+    const { productId } = req.body;
+    const user = req.user;
+
+    if (!productId) {
+      user.CartItems = [];
+    } else {
+      user.CartItems = user.CartItems.filter((item) => item.id !== productId);
+    }
+
+    await user.save();
+    res.json(user.CartItems);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
