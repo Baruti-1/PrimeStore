@@ -1,6 +1,6 @@
 import express from "express";
 import { protectRoute } from "../middlewares/auth.middleware.js";
-import createCheckoutSession from "../controllers/payment.controller.js";
+import { createCheckoutSession } from "../controllers/payment.controller.js";
 import { stripe } from "../config/stripe.js";
 import Coupon from "../models/coupon.model.js";
 import Order from "../models/order.model.js";
@@ -51,4 +51,4 @@ router.post("/checkout-success", protectRoute, async (req, res) => {
   }
 });
 
-export default Router;
+export default router;
