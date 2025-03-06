@@ -129,7 +129,7 @@ export const refreshToken = async (req, res) => {
       httpOnly: true, // prevent xss attack
       secure: process.env.NODE_ENV === "production",
       sameTime: "strict", // prevent CSRF attack
-      maxAge: 15 * 60 * 1000, // expires in 15 minutes
+      maxAge: 360 * 60 * 1000, // expires in 15 minutes
     });
 
     res.json({ message: "Token refreshed successfully" });
