@@ -63,6 +63,7 @@ function App() {
             element={user ? <CartPage /> : <Navigate to={"/login"} />}
           />
         </Routes>
+        <Route path="/category/:category" element={<CategoryPage />} />
       </div>
       <Toaster />
     </div>
