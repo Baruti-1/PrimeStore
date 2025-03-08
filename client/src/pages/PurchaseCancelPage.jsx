@@ -18,11 +18,11 @@ const PurchaseCancelPage = () => {
           <h1 className="text-2xl sm:text-3xl font-bold text-center text-red-500 mb-2">
             Purchase Cancelled
           </h1>
-          <p className="text-gray-300 text-center mb-6">
+          <p className="text-yellow-200 text-center mb-6">
             Your order has been cancelled. No charges have been made.
           </p>
           <div className="bg-gray-700 rounded-lg p-4 mb-6">
-            <p className="text-sm text-gray-400 text-center">
+            <p className="text-sm text-yellow-200 text-center">
               If you encountered any issues during the checkout process, please
               don&apos;t hesitate to contact our support team.
             </p>
@@ -30,7 +30,7 @@ const PurchaseCancelPage = () => {
           <div className="space-y-4">
             <Link
               to={"/"}
-              className="w-full bg-gray-700 hover:bg-gray-600 text-gray-300 font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center"
+              className="w-full bg-gray-700 hover:bg-gray-600 text-yellow-200 font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center"
             >
               <ArrowLeft className="mr-2" size={18} />
               Return to Shop

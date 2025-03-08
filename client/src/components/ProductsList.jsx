@@ -18,32 +18,32 @@ const ProductsList = () => {
           <tr>
             <th
               scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+              className="px-6 py-3 text-left text-xs font-medium text-yellow-200 uppercase tracking-wider"
             >
               Product
             </th>
             <th
               scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+              className="px-6 py-3 text-left text-xs font-medium text-yellow-200 uppercase tracking-wider"
             >
               Price
             </th>
             <th
               scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+              className="px-6 py-3 text-left text-xs font-medium text-yellow-200 uppercase tracking-wider"
             >
               Category
             </th>
 
             <th
               scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+              className="px-6 py-3 text-left text-xs font-medium text-yellow-200 uppercase tracking-wider"
             >
               Featured
             </th>
             <th
               scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+              className="px-6 py-3 text-left text-xs font-medium text-yellow-200 uppercase tracking-wider"
             >
               Actions
             </th>

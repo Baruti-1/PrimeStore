@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 const generateTokens = (userId) => {
   const accessToken = jwt.sign({ userId }, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: "15m",
+    expiresIn: "120m",
   });
 
   const refreshToken = jwt.sign({ userId }, process.env.REFRESH_TOKEN_SECRET, {
@@ -28,7 +28,7 @@ const setCookies = (res, accessToken, refreshToken) => {
     httpOnly: true, // prevent xss attack
     secure: process.env.NODE_ENV === "production",
     sameTime: "strict", // prevent CSRF attack
-    maxAge: 15 * 60 * 1000, // expires in 15 minutes
+    maxAge: 120 * 60 * 1000, // expires in 15 minutes
   });
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true, // prevent xss attack
@@ -122,14 +122,14 @@ export const refreshToken = async (req, res) => {
     }
 
     const accessToken = jwt.sign({ userId }, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: "15m",
+      expiresIn: "120m",
     });
 
     res.cookie("accessToken", accessToken, {
       httpOnly: true, // prevent xss attack
       secure: process.env.NODE_ENV === "production",
       sameTime: "strict", // prevent CSRF attack
-      maxAge: 360 * 60 * 1000, // expires in 15 minutes
+      maxAge: 120 * 60 * 1000, // expires in 15 minutes
     });
 
     res.json({ message: "Token refreshed successfully" });

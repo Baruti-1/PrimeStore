@@ -118,8 +118,8 @@ const AnalyticsCard = ({ title, value, icon: Icon, color }) => (
   >
     <div className="flex justify-between items-center">
       <div className="z-10">
-        <p className="text-emerald-300 text-sm mb-1 font-semibold">{title}</p>
-        <h3 className="text-white text-3xl font-bold">{value}</h3>
+        <p className="text-yellow-500 text-sm mb-1 font-semibold">{title}</p>
+        <h3 className="text-yellow-200 text-3xl font-bold">{value}</h3>
       </div>
     </div>
     <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 to-emerald-900 opacity-30" />
