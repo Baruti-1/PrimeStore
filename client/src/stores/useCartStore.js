@@ -47,6 +47,14 @@ export const useCartStore = create((set, get) => ({
     set({ cart: [], coupon: null, total: 0, subtotal: 0 });
   },
 
+  clearShoppingCart: async () => {
+    try {
+      await axios.delete(`/cart/clear-cart`);
+    } catch (error) {
+      toast.error(error.response.data.message || "An error occurred");
+    }
+  },
+
   addToCart: async (product) => {
     try {
       await axios.post("/cart", { productId: product._id });

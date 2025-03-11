@@ -7,7 +7,8 @@ import Confetti from "react-confetti";
 
 const PurchaseSuccessPage = () => {
   const [isProcessing, setIsProcessing] = useState(true);
-  const { clearCart } = useCartStore();
+  const { clearCart, clearShoppingCart } = useCartStore();
+  // const { removeFromCart, updateQuantity } = useCartStore();
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -17,8 +18,9 @@ const PurchaseSuccessPage = () => {
           sessionId,
         });
         clearCart();
+        clearShoppingCart();
       } catch (error) {
-        console.log(error);
+        console.log("ERROR: ", error);
       } finally {
         setIsProcessing(false);
       }

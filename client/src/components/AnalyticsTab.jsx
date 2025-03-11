@@ -59,7 +59,7 @@ const AnalyticsTab = () => {
           color="from-emerald-500 to-green-700"
         />
         <AnalyticsCard
-          title="Total Sales"
+          title="Total Orders"
           value={analyticsData.totalSales.toLocaleString()}
           icon={ShoppingCart}
           color="from-emerald-500 to-cyan-700"
