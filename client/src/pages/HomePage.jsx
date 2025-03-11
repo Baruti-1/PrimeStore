@@ -4,13 +4,12 @@ import CategoryItem from "../components/CategoryItem";
 // import FeaturedProducts from "../components/FeaturedProducts";
 
 const categories = [
-  { href: "/jeans", name: "Jeans", imageUrl: "/jeans.jpg" },
-  { href: "/t-shirts", name: "T-shirts", imageUrl: "/tshirts.jpg" },
-  { href: "/shoes", name: "Shoes", imageUrl: "/shoes.jpg" },
-  { href: "/glasses", name: "Glasses", imageUrl: "/glasses.png" },
-  { href: "/jackets", name: "Jackets", imageUrl: "/jackets.jpg" },
-  { href: "/suits", name: "Suits", imageUrl: "/suits.jpg" },
-  { href: "/bags", name: "Bags", imageUrl: "/bags.jpg" },
+  { href: "/iphone", name: "Iphone", imageUrl: "/iphone1.jpg" },
+  { href: "/samsung", name: "Samsung", imageUrl: "/samsung1.jpg" },
+  { href: "/google-pixel", name: "Google Pixel", imageUrl: "/pixel1.jpg" },
+  { href: "/oppo", name: "Oppo", imageUrl: "/oppo1.jpg" },
+  { href: "/xiaomi", name: "Xiaomi", imageUrl: "/Xiaomi1.webp" },
+  { href: "/sony", name: "Sony", imageUrl: "/sony1.jpeg" },
 ];
 
 const HomePage = () => {
