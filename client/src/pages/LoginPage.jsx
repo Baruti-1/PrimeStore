@@ -14,7 +14,7 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password);
-    navigate(-1);
+    // navigate(-1);
   };
 
   return (
