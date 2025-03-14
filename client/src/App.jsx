@@ -1,18 +1,19 @@
 import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage.jsx";
-import SignUpPage from "./pages/SignUpPage.jsx";
-import LoginPage from "./pages/LoginPage.jsx";
-import AdminPage from "./pages/AdminPage.jsx";
-import CategoryPage from "./pages/CategoryPage.jsx";
-import CartPage from "./pages/CartPage.jsx";
-import Navbar from "./components/Navbar.jsx";
-import PurchaseSuccessPage from "./pages/PurchaseSuccessPage.jsx";
-import PurchaseCancelPage from "./pages/PurchaseCancelPage.jsx";
-import LoadingSpinner from "./components/LoadingSpinner.jsx";
+import HomePage from "./pages/HomePage";
+import SignUpPage from "./pages/SignUpPage";
+import LoginPage from "./pages/LoginPage";
+import AdminPage from "./pages/AdminPage";
+import CategoryPage from "./pages/CategoryPage";
+import CartPage from "./pages/CartPage";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
+import PurchaseCancelPage from "./pages/PurchaseCancelPage";
+import LoadingSpinner from "./components/LoadingSpinner";
 import { Toaster } from "react-hot-toast";
-import { useUserStore } from "./stores/useUserStore.js";
-import { useCartStore } from "./stores/useCartStore.js";
+import { useUserStore } from "./stores/useUserStore";
+import { useCartStore } from "./stores/useCartStore";
 
 function App() {
   const { user, checkAuth, checkingAuth } = useUserStore();
@@ -75,6 +76,7 @@ function App() {
             element={user ? <PurchaseCancelPage /> : <Navigate to={"/login"} />}
           />
         </Routes>
+        <Footer />
       </div>
       <Toaster />
     </div>
